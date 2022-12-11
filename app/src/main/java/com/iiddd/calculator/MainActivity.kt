@@ -2,112 +2,118 @@ package com.iiddd.calculator
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var btn0: Button? = null
-    private var btn1: Button? = null
-    private var btn2: Button? = null
-    private var btn3: Button? = null
-    private var btn4: Button? = null
-    private var btn5: Button? = null
-    private var btn6: Button? = null
-    private var btn7: Button? = null
-    private var btn8: Button? = null
-    private var btn9: Button? = null
+    private var btnZero: Button? = null
+    private var btnOne: Button? = null
+    private var btnTwo: Button? = null
+    private var btnThree: Button? = null
+    private var btnFour: Button? = null
+    private var btnFive: Button? = null
+    private var btnSix: Button? = null
+    private var btnSeven: Button? = null
+    private var btnEight: Button? = null
+    private var btnNine: Button? = null
     private var btnDivision: Button? = null
     private var btnMultiply: Button? = null
     private var btnMinus: Button? = null
     private var btnPlus: Button? = null
     private var btnClear: Button? = null
     private var btnResult: Button? = null
+    private var tvInput: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initKeyboard()
-        btn0?.setOnClickListener {
-            onDigit()
+        tvInput = findViewById(R.id.tvInput)
+        btnZero?.setOnClickListener {
+            onDigit(btnZero as Button)
         }
 
-        btn1?.setOnClickListener {
-            onDigit()
+        btnOne?.setOnClickListener {
+            onDigit(btnOne as Button)
         }
 
-        btn2?.setOnClickListener {
-            onDigit()
+        btnTwo?.setOnClickListener {
+            onDigit(btnTwo as Button)
         }
 
-        btn3?.setOnClickListener {
-            onDigit()
+        btnThree?.setOnClickListener {
+            onDigit(btnThree as Button)
         }
 
-        btn4?.setOnClickListener {
-            onDigit()
+        btnFour?.setOnClickListener {
+            onDigit(btnFour as Button)
         }
 
-        btn5?.setOnClickListener {
-            onDigit()
+        btnFive?.setOnClickListener {
+            onDigit(btnFive as Button)
         }
 
-        btn6?.setOnClickListener {
-            onDigit()
+        btnSix?.setOnClickListener {
+            onDigit(btnSix as Button)
         }
 
-        btn7?.setOnClickListener {
-            onDigit()
+        btnSeven?.setOnClickListener {
+            onDigit(btnSeven as Button)
         }
 
-        btn8?.setOnClickListener {
-            onDigit()
+        btnEight?.setOnClickListener {
+            onDigit(btnEight as Button)
         }
 
-        btn9?.setOnClickListener {
-            onDigit()
+        btnNine?.setOnClickListener {
+            onDigit(btnNine as Button)
         }
 
         btnDivision?.setOnClickListener {
-            onDigit()
+            onDigit(btnDivision as Button)
         }
 
         btnMultiply?.setOnClickListener {
-            onDigit()
+            onDigit(btnMultiply as Button)
         }
 
         btnMinus?.setOnClickListener {
-            onDigit()
+            onDigit(btnMinus as Button)
         }
 
         btnPlus?.setOnClickListener {
-            onDigit()
+            onDigit(btnPlus as Button)
         }
 
         btnClear?.setOnClickListener {
-            onDigit()
+            onClear()
         }
 
         btnResult?.setOnClickListener {
-            onDigit()
+            onDigit(btnResult as Button)
         }
     }
 
-    private fun onDigit() {
-        Toast.makeText(this, "Button clicked", Toast.LENGTH_LONG).show()
+    private fun onDigit(view: Button) {
+        tvInput?.append((view).text)
+    }
+
+    private fun onClear() {
+        tvInput?.text = null
     }
 
     private fun initKeyboard() {
-        btn0 = findViewById(R.id.buttonZero)
-        btn1 = findViewById(R.id.buttonOne)
-        btn2 = findViewById(R.id.buttonTwo)
-        btn3 = findViewById(R.id.buttonThree)
-        btn4 = findViewById(R.id.buttonFour)
-        btn5 = findViewById(R.id.buttonFive)
-        btn6 = findViewById(R.id.buttonSix)
-        btn7 = findViewById(R.id.buttonSeven)
-        btn8 = findViewById(R.id.buttonEight)
-        btn9 = findViewById(R.id.buttonNine)
+        btnZero = findViewById(R.id.buttonZero)
+        btnOne = findViewById(R.id.buttonOne)
+        btnTwo = findViewById(R.id.buttonTwo)
+        btnThree = findViewById(R.id.buttonThree)
+        btnFour = findViewById(R.id.buttonFour)
+        btnFive = findViewById(R.id.buttonFive)
+        btnSix = findViewById(R.id.buttonSix)
+        btnSeven = findViewById(R.id.buttonSeven)
+        btnEight = findViewById(R.id.buttonEight)
+        btnNine = findViewById(R.id.buttonNine)
         btnDivision = findViewById(R.id.buttonDivision)
         btnMultiply = findViewById(R.id.buttonMultiply)
         btnMinus = findViewById(R.id.buttonMinus)
