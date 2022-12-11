@@ -1,6 +1,7 @@
 package com.iiddd.calculator
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,8 +23,11 @@ class MainActivity : AppCompatActivity() {
     private var btnMinus: Button? = null
     private var btnPlus: Button? = null
     private var btnClear: Button? = null
+    private var btnDot: Button? = null
     private var btnResult: Button? = null
     private var tvInput: TextView? = null
+    var isLastNumeric: Boolean = true
+    var isLastDot: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,59 +35,59 @@ class MainActivity : AppCompatActivity() {
         initKeyboard()
         tvInput = findViewById(R.id.tvInput)
         btnZero?.setOnClickListener {
-            onDigit(btnZero as Button)
+            onDigit(btnZero!!)
         }
 
         btnOne?.setOnClickListener {
-            onDigit(btnOne as Button)
+            onDigit(btnOne!!)
         }
 
         btnTwo?.setOnClickListener {
-            onDigit(btnTwo as Button)
+            onDigit(btnTwo!!)
         }
 
         btnThree?.setOnClickListener {
-            onDigit(btnThree as Button)
+            onDigit(btnThree!!)
         }
 
         btnFour?.setOnClickListener {
-            onDigit(btnFour as Button)
+            onDigit(btnFour!!)
         }
 
         btnFive?.setOnClickListener {
-            onDigit(btnFive as Button)
+            onDigit(btnFive!!)
         }
 
         btnSix?.setOnClickListener {
-            onDigit(btnSix as Button)
+            onDigit(btnSix!!)
         }
 
         btnSeven?.setOnClickListener {
-            onDigit(btnSeven as Button)
+            onDigit(btnSeven!!)
         }
 
         btnEight?.setOnClickListener {
-            onDigit(btnEight as Button)
+            onDigit(btnEight!!)
         }
 
         btnNine?.setOnClickListener {
-            onDigit(btnNine as Button)
+            onDigit(btnNine!!)
         }
 
         btnDivision?.setOnClickListener {
-            onDigit(btnDivision as Button)
+            onOperator(btnDivision!!)
         }
 
         btnMultiply?.setOnClickListener {
-            onDigit(btnMultiply as Button)
+            onOperator(btnMultiply!!)
         }
 
         btnMinus?.setOnClickListener {
-            onDigit(btnMinus as Button)
+            onOperator(btnMinus!!)
         }
 
         btnPlus?.setOnClickListener {
-            onDigit(btnPlus as Button)
+            onOperator(btnPlus!!)
         }
 
         btnClear?.setOnClickListener {
@@ -93,14 +97,52 @@ class MainActivity : AppCompatActivity() {
         btnResult?.setOnClickListener {
             onDigit(btnResult as Button)
         }
+
+        btnDot?.setOnClickListener {
+            onDecimalPoint()
+        }
     }
 
-    private fun onDigit(view: Button) {
-        tvInput?.append((view).text)
+    private fun onDigit(view: View) {
+        tvInput?.append((view as Button).text)
+        isLastNumeric = true
+        isLastDot = false
     }
 
     private fun onClear() {
-        tvInput?.text = null
+        tvInput?.text = "0"
+    }
+
+    private fun onDecimalPoint() {
+        if (isLastNumeric && !isLastDot) {
+            tvInput?.append(".")
+            isLastNumeric = false
+            isLastDot = true
+        }
+    }
+
+    private fun onOperator(view: View) {
+        tvInput?.text?.let {
+            if (isLastNumeric && !isOperatorAdded(it.toString())) {
+                tvInput?.append((view as Button).text)
+                isLastNumeric = false
+                isLastDot = false
+            }
+        }
+    }
+
+    private fun isOperatorAdded(value: String): Boolean {
+        val operators = listOf(
+            "/", "*", "+", "-"
+        )
+        return if (value.startsWith("-")) {
+            false
+        } else {
+            val match = operators.filter {
+                it in value
+            }
+            match.isNotEmpty()
+        }
     }
 
     private fun initKeyboard() {
@@ -119,6 +161,7 @@ class MainActivity : AppCompatActivity() {
         btnMinus = findViewById(R.id.buttonMinus)
         btnPlus = findViewById(R.id.buttonPlus)
         btnClear = findViewById(R.id.buttonClear)
+        btnDot = findViewById(R.id.buttonDot)
         btnResult = findViewById(R.id.buttonResult)
     }
 }
