@@ -37,34 +37,34 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/buttonSeven"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="7" />
+                android:text="@string/_7" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/buttonEight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="8" />
+                android:text="@string/_8" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/buttonNine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="9" />
+                android:text="@string/_9" />
 
             <Button
                 android:id="@+id/buttonDivision"
@@ -74,7 +74,7 @@
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="/" />
+                android:text="@string/division" />
         </TableRow>
 
         <TableRow
@@ -83,34 +83,34 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/buttonFour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="4" />
+                android:text="@string/_4" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/buttonFive"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="5" />
+                android:text="@string/_5" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/buttonSix"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="6" />
+                android:text="@string/_6" />
 
             <Button
                 android:id="@+id/buttonMultiply"
@@ -120,7 +120,7 @@
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="*" />
+                android:text="@string/multiply" />
         </TableRow>
 
         <TableRow
@@ -129,34 +129,34 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/buttonOne"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="1" />
+                android:text="@string/_1" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="2" />
+                android:text="@string/_2" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonThree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="3" />
+                android:text="@string/_3" />
 
             <Button
                 android:id="@+id/buttonMinus"
@@ -166,7 +166,7 @@
                 android:layout_weight="0.25"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="-" />
+                android:text="@string/minus" />
         </TableRow>
 
         <TableRow
@@ -175,14 +175,14 @@
             android:weightSum="0.9">
 
             <Button
-                android:id="@+id/button0"
+                android:id="@+id/buttonZero"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="0.465"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="0" />
+                android:text="@string/_0" />
 
             <Button
                 android:id="@+id/buttonClear"
@@ -192,7 +192,7 @@
                 android:layout_weight="0.22"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="CLR" />
+                android:text="@string/clear" />
 
             <Button
                 android:id="@+id/buttonPlus"
@@ -202,7 +202,7 @@
                 android:layout_weight="0.217"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="+" />
+                android:text="@string/plus" />
         </TableRow>
 
         <TableRow
@@ -219,7 +219,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/button_tint"
                 android:paddingVertical="20dp"
-                android:text="=" />
+                android:text="@string/result" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
