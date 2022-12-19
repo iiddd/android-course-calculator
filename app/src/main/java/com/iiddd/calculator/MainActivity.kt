@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +27,9 @@ class MainActivity : AppCompatActivity() {
     private var btnDot: Button? = null
     private var btnResult: Button? = null
     private var tvInput: TextView? = null
-    var isLastNumeric: Boolean = true
-    var isLastDot: Boolean = false
+    private var isLastNumeric: Boolean = true
+    private var isInitialState: Boolean = true
+    private var isLastDot: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnResult?.setOnClickListener {
-            onDigit(btnResult as Button)
+            onEqual()
         }
 
         btnDot?.setOnClickListener {
@@ -104,6 +106,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onDigit(view: View) {
+        if (isInitialState) {
+            tvInput?.text = ""
+            isInitialState = false
+        }
         tvInput?.append((view as Button).text)
         isLastNumeric = true
         isLastDot = false
@@ -111,6 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onClear() {
         tvInput?.text = "0"
+        isInitialState = true
     }
 
     private fun onDecimalPoint() {
@@ -129,6 +136,66 @@ class MainActivity : AppCompatActivity() {
                 isLastDot = false
             }
         }
+    }
+
+    private fun onEqual() {
+        if (isLastNumeric) {
+            var tvValue = tvInput?.text.toString()
+            var prefix = ""
+            var splitValue: List<String>
+            try {
+                if (tvValue.startsWith("-")) {
+                    prefix = "-"
+                    tvValue = tvValue.substring(1)
+                }
+                val regex = """(\d*)([+,\-,*,/])(\d*)""".toRegex()
+                val matchResult = regex.find(tvValue)
+                when (val operator: String? = matchResult?.groups?.get(2)?.value) {
+                    "+" -> {
+                        splitValue = tvValue.split(operator)
+                        val (firstArg, secondArg) = extractArguments(prefix, splitValue)
+                        tvInput?.text =
+                            formatResult((firstArg.toDouble() + secondArg.toDouble()).toString())
+                    }
+                    "-" -> {
+                        splitValue = tvValue.split(operator)
+                        val (firstArg, secondArg) = extractArguments(prefix, splitValue)
+                        tvInput?.text =
+                            formatResult((firstArg.toDouble() - secondArg.toDouble()).toString())
+                    }
+                    "*" -> {
+                        splitValue = tvValue.split(operator)
+                        val (firstArg, secondArg) = extractArguments(prefix, splitValue)
+                        tvInput?.text =
+                            formatResult((firstArg.toDouble() * secondArg.toDouble()).toString())
+                    }
+                    "/" -> {
+                        splitValue = tvValue.split(operator)
+                        val (firstArg, secondArg) = extractArguments(prefix, splitValue)
+                        tvInput?.text =
+                            formatResult((firstArg.toDouble() / secondArg.toDouble()).toString())
+                    }
+                }
+
+            } catch (e: java.lang.ArithmeticException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun extractArguments(
+        prefix: String,
+        splitValue: List<String>
+    ): Pair<String, String> {
+        val firstArg = prefix + splitValue[0]
+        val secondArg = splitValue[1]
+        return Pair(firstArg, secondArg)
+    }
+
+    private fun formatResult(result: String): String {
+        if (result.endsWith(".0")) {
+            return result.split(".")[0]
+        } else return result
     }
 
     private fun isOperatorAdded(value: String): Boolean {
